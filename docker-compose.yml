@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    image: debian:latest
+    container_name: apache_compose
+    ports:
+      - "8082:80"
+    volumes:
+      - .:/var/www/html
+    command: >
+      bash -c "apt update && 
+               apt install -y apache2 && 
+               apache2ctl -D FOREGROUND"
